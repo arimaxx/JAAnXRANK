@@ -131,7 +131,7 @@ async def handle_today_query(query):
     top_members = await get_top_members("today")
     response = " 𝗧𝗢𝗗𝗔𝗬 𝗟𝗘𝗔𝗗𝗘𝗥𝗕𝗢𝗔𝗥𝗗:\n\n"
     counter = 1
-    for memberin top_members:
+    for member in top_members:
         user_id = member["_id"]
         chat_member = await get_chat_member_safe(query.message.chat.id, user_id)
 
