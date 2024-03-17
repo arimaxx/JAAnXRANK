@@ -11,7 +11,7 @@ from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 API_ID = "21971830"
 API_HASH = "46389a1d51d331e5d30d4d6b8a101f3d"
 BOT_TOKEN = "6904714157:AAG3A1V3A72Gf4j2-5AXudy1EFDsu1wORjU"
-MONGO_URL = "mmongodb+srv://seleno:seleno@cluster0.a4gsvlg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+MONGO_URL = "mongodb+srv://seleno:seleno@cluster0.a4gsvlg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 BOT_USERNAME = "chat_rankbot"
 SUPPORT_GROUP_USERNAME = "three_stars_ki_duniya"
 SOURCE_CODE_CHANNEL_USERNAME = "ll_about_ari_ll"
