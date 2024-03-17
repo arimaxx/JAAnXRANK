@@ -11,7 +11,7 @@ from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 API_ID = "21971830"
 API_HASH = "46389a1d51d331e5d30d4d6b8a101f3d"
 BOT_TOKEN = "6904714157:AAG3A1V3A72Gf4j2-5AXudy1EFDsu1wORjU"
-MONGO_URL = "mongodb+srv://seleno:seleno@cluster0.a4gsvlg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+MONGO_URL = "mmongodb+srv://seleno:seleno@cluster0.a4gsvlg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 BOT_USERNAME = "chat_rankbot"
 SUPPORT_GROUP_USERNAME = "three_stars_ki_duniya"
 SOURCE_CODE_CHANNEL_USERNAME = "ll_about_ari_ll"
@@ -78,7 +78,7 @@ async def start_private_chat(client, message):
             ]
         ])
 
-    await client.send_photo(
+    awaitclient.send_photo(
         chat_id=message.chat.id,
         photo=image_url,
         caption="<b>нυι</b> тнιѕ ιѕ 「🛡ᴛꜱ ʀᴀɴᴋɪɴɢ ʙᴏᴛ🛡」❖ 💖\n"
@@ -86,18 +86,17 @@ async def start_private_chat(client, message):
                 "💫 ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛꜱ ʀᴀɴᴋɪɴɢ ʙᴏᴛ!.\n "
                 "🌟 ᴅɪꜱᴄᴏᴠᴇʀ ᴡʜᴏ ꜱʜɪɴᴇꜱ ᴛʜᴇ ʙʀɪɢʜᴛᴇꜱᴛ ɪɴ ᴏᴜʀ ᴄᴏᴍᴍᴜɴɪᴛʏ! ꜰʀᴏᴍ ᴀᴄᴛɪᴠᴇ ᴍᴇᴍʙᴇʀꜱ ᴛᴏ ᴛᴏᴘ ᴄᴏɴᴛʀɪʙᴜᴛᴏʀꜱ, ᴡᴇ'ʀᴇ ʜᴇʀᴇ ᴛᴏ ʀᴇᴄᴏɢɴɪᴢᴇ ᴇxᴄᴇʟʟᴇɴᴄᴇ.\n"
                 "📊 Stay updated with real-time rankings, track your progress, and compete with friends to climb the leaderboard!\n"
-                "❖Join us in celebrating achievements and fostering a vibrant community together!❖\n"
                 "♡━━━━━━━━ ᴀʀɪ ━━━━━━━♡\n\n"
                 "ᴍᴀᴅᴇ ᴡɪᴛʜ 🖤 ʙʏ <a href=\"https://t.me/lll_notookk_lll\">||ᴀʀɪ||❣️</a>",
         reply_markup=keyboard
       )
     accha = await message.reply_text(
-        text="__ᴅιиg ᴅιиg ꨄ︎ ѕтαятιиg..__"
+        text="__ᴅιиg ᴅιиg ꨄ︎ ѕтαятιιg..__"
     )
     await asyncio.sleep(0.2)
-    await accha.edit("__ᴅιиg ᴅιиg ꨄ sтαятιиg.....__")
+    await accha.edit("__ᴅιиg ᴅιиg ꨄ sтαятιιg.....__")
     await asyncio.sleep(0.2)
-    await accha.edit("__ᴅιиg ᴅιиg ꨄ︎ sтαятιиg..__")
+    await accha.edit("__ᴅιиg ᴅιиg ꨄ︎ sтαятιιg..__")
     await asyncio.sleep(0.2)
     await accha.delete()
 
@@ -126,7 +125,7 @@ async def callback_handler(_, query):
 
 async def handle_today_query(query):
     top_members = await get_top_members("today")
-    response = " 𝗧𝗢𝗗𝗔𝗬 𝗟𝗘𝗔𝗗𝗘𝗥𝗕𝗢𝗔��������:\n\n"
+    response = " 𝗧𝗢𝗗𝗔𝗬 𝗟𝗘𝗔𝗗𝗘𝗥𝗕𝗢𝗔𝗥𝗗:\n\n"
     counter = 1
     for member in top_members:
         user_id = member["_id"]
@@ -143,10 +142,6 @@ async def handle_today_query(query):
 
     await query.message.edit_text(response, reply_markup=InlineKeyboardMarkup(
             [
-                [
-                    InlineKeyboardButton("🍃ᴛᴏᴅᴀʏ🍃", callback_data="today"),
-                    InlineKeyboardButton("🍃ᴛᴏᴛᴀʟ🍃", callback_data="total")
-                ],
                 [
                     InlineKeyboardButton("🔙 Back", callback_data="back"),
                     InlineKeyboardButton("🔒 Close", callback_data="close")
@@ -174,10 +169,6 @@ async def handle_total_query(query):
     await query.message.edit_text(response, reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🍃ᴛᴏᴅᴀʏ🍃", callback_data="today"),
-                    InlineKeyboardButton("🍃ᴛᴏᴛᴀʟ🍃", callback_data="total")
-                ],
-                [
                     InlineKeyboardButton("🔙 Back", callback_data="back"),
                     InlineKeyboardButton("🔒 Close", callback_data="close")
                 ]
@@ -188,11 +179,12 @@ async def handle_channel_query(query):
     await query.message.reply_text("𝗝𝗼𝗶𝗻 𝗼𝘂𝗿 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 𝗳𝗼𝗿 𝗺𝗼𝗿𝗲 𝘂𝗽𝗱𝗮𝘁𝗲𝘀: @ll_about_ari_ll")
 
 async def handle_group_query(query):
-    await query.message.reply_text("𝗝𝗼𝗶𝗻 𝗼𝘂𝗿 𝗴𝗿𝗼𝘂𝗽 𝗳𝗼𝗿 𝗱𝗶������������������������������������: @three_stars_ki_duniya")
+    await query.message.reply_text("𝗝𝗼𝗶𝗻 𝗼𝘂𝗿 𝗴𝗿𝗼𝘂𝗽 𝗳𝗼𝗿 𝗱𝗶𝘀𝗰𝘂𝘀𝘀𝗶𝗼𝗻𝘀: @three_stars_ki_duniya")
 
 async def handle_back_query(query):
-    await query.message.edit_reply_markup(
-        InlineKeyboardMarkup(
+    await query.message.edit_text(
+        "𝗧𝗵𝗶𝘀 𝗶𝘀 𝗧𝗦 𝗥𝗮𝗻𝗸𝗶𝗻𝗴 𝗕𝗼𝘁 \n 𝗰𝗼𝘂𝗻𝘁 𝘁𝗵𝗲 𝗰𝗵𝗮𝘁 𝗮𝗰𝘁𝗶𝘃𝗶𝘁𝘆 𝗼𝗳 𝘂𝘀𝗲𝗿𝘀 𝗶𝗻 𝘁𝗵𝗶𝘀 𝗴𝗿𝗼𝘂𝗽 \n 𝗬𝗼𝘂𝗿 𝗿𝗮𝗻𝗸𝗶𝗻𝗴 𝘁𝗲𝘅𝘁 𝗴𝗼𝗲𝘀 𝗵𝗲𝗿𝗲...",
+        reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton("🍃ᴛᴏᴅᴀʏ🍃", callback_data="today"),
@@ -242,7 +234,7 @@ print(f"""╔═════❰𝐖𝐄𝐋𝐂𝐎𝐌𝐄❱════❍⊱
 ║╔═════ஜ۩۞۩ஜ════╗
 ║   ᴍᴇʀᴇ ʟɪʏᴇ ᴍᴇʀɪ ᴅᴜɴɪʏᴀ ʜᴏ ᴛᴍ..♥️ ᴍᴀɪɴᴇ
 ║
-║ ᴊᴏ ᴍᴀɴɢɪ ᴡᴏ ᴅᴜᴀ ʜᴏ ᴛᴍ💞 ᴍᴇʀɪ ɴᴀᴢᴀʀ
+║ ᴊᴏ ᴍᴀɴɢɪ ᴡᴏ ᴅᴜᴀ ʜᴏᴛᴍ💞 ᴍᴇʀɪ ɴᴀᴢᴀʀ
 ║
 ║ ᴋɪ ᴛᴀʟᴀꜱʜ ʜᴏ ᴛᴍ✅ ᴍᴀɪɴᴇ ᴊᴏ ᴄʜᴀʜᴀ ᴡᴏ
 ║
