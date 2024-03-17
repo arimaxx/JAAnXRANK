@@ -11,7 +11,7 @@ from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 API_ID = "21971830"
 API_HASH = "46389a1d51d331e5d30d4d6b8a101f3d"
 BOT_TOKEN = "6904714157:AAG3A1V3A72Gf4j2-5AXudy1EFDsu1wORjU"
-MONGO_URL = "mmongodb+srv://seleno:seleno@cluster0.a4gsvlg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+MONGO_URL = "mongodb+srv://seleno:seleno@cluster0.a4gsvlg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 BOT_USERNAME = "chat_rankbot"
 SUPPORT_GROUP_USERNAME = "three_stars_ki_duniya"
 SOURCE_CODE_CHANNEL_USERNAME = "ll_about_ari_ll"
@@ -51,6 +51,10 @@ async def top_members_with_image(message, text, photo_url):
                 [
                     InlineKeyboardButton("🍃ᴄʜᴀɴɴᴇʟ🍃", callback_data="channel"),
                     InlineKeyboardButton("🍃ɢʀᴏᴜᴘ🍃", callback_data="group")
+                ],
+                [
+                    InlineKeyboardButton("🔙 Back", callback_data="back"),
+                    InlineKeyboardButton("🔒 Close", callback_data="close")
                 ]
             ]
         )
@@ -124,6 +128,10 @@ async def callback_handler(_, query):
         await handle_channel_query(query)
     elif query.data == "group":
         await handle_group_query(query)
+    elif query.data == "back":
+        await handle_back_query(query)
+    elif query.data == "close":
+        await handle_close_query(query)
 
 async def handle_today_query(query):
     top_members = await get_top_members("today")
@@ -155,7 +163,7 @@ async def handle_total_query(query):
         if chat_member:
             total_messages = member["total_messages"]
             full_name = f"{chat_member.user.first_name} {chat_member.user.last_name}" if chat_member.user.last_name else chat_member.user.first_name
-            username = chat_member.user.username
+           username = chat_member.user.username
             user_info = f"{counter}. {full_name}, ⏤͟͞{total_messages}\n"
 
             response += user_info
@@ -168,6 +176,25 @@ async def handle_channel_query(query):
 
 async def handle_group_query(query):
     await query.message.reply_text("𝗝𝗼𝗶𝗻 𝗼𝘂𝗿 𝗴𝗿𝗼𝘂𝗽 𝗳𝗼𝗿 𝗱𝗶𝘀𝗰𝘂𝘀𝘀𝗶𝗼𝗻𝘀: @three_stars_ki_duniya")
+
+async def handle_back_query(query):
+    await query.message.edit_reply_markup(
+        InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("🍃ᴛᴏᴅᴀʏ🍃", callback_data="today"),
+                    InlineKeyboardButton("🍃ᴛᴏᴛᴀʟ🍃", callback_data="total")
+                ],
+                [
+                    InlineKeyboardButton("🍃ᴄʜᴀɴɴᴇʟ🍃", callback_data="channel"),
+                    InlineKeyboardButton("🍃ɢʀᴏᴜᴘ🍃", callback_data="group")
+                ]
+            ]
+        )
+    )
+
+async def handle_close_query(query):
+    await query.message.delete()
 
 async def get_top_members(timeframe):
     if timeframe == "overall":
@@ -204,7 +231,7 @@ print(f"""╔═════❰𝐖𝐄𝐋𝐂𝐎𝐌𝐄❱════❍⊱
 ║
 ║ ᴊᴏ ᴍᴀɴɢɪ ᴡᴏ ᴅᴜᴀ ʜᴏ ᴛᴍ💞 ᴍᴇʀɪ ɴᴀᴢᴀʀ
 ║
-║ ᴋɪ ᴛᴀʟᴀꜱʜ ʜᴏ ᴛᴍ🥰 ᴍᴀɪɴᴇ ᴊᴏ ᴄʜᴀʜᴀ ᴡᴏ
+║ ᴋɪ ᴛᴀʟᴀꜱʜ ʜᴏ ᴛᴍ✅ ᴍᴀɪɴᴇ ᴊᴏ ᴄʜᴀʜᴀ ᴡᴏ
 ║
 ║ ᴘʏᴀʀ ʜᴏ ᴛᴍ😍 ᴍᴇʀᴇ ɪɴᴛᴇᴢᴀᴀʀ ᴋɪ ʀᴀʜᴀᴛ
 ║
