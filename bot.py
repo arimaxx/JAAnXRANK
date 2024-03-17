@@ -15,7 +15,6 @@ MONGO_URL = "mongodb+srv://seleno:seleno@cluster0.a4gsvlg.mongodb.net/?retryWrit
 BOT_USERNAME = "chat_rankbot"
 SUPPORT_GROUP_USERNAME = "three_stars_ki_duniya"
 SOURCE_CODE_CHANNEL_USERNAME = "ll_about_ari_ll"
-
 app = Client(
     "Level" ,
     api_id = API_ID ,
@@ -40,7 +39,7 @@ user_data = {}
 
 async def top_members_with_image(message, text, photo_url):
     await message.reply_photo(
-        photo=photo_url,
+        photo= "https://telegra.ph/file/00c74d7d761fdb7ba201a.jpg",
         caption=text,
         reply_markup=InlineKeyboardMarkup(
             [
@@ -78,7 +77,7 @@ async def start_private_chat(client, message):
             ]
         ])
 
-    await client.send_photo(
+    awaitclient.send_photo(
         chat_id=message.chat.id,
         photo=image_url,
         caption="<b>нυι</b> тнιѕ ιѕ 「🛡ᴛꜱ ʀᴀɴᴋɪɴɢ ʙᴏᴛ🛡」❖ 💖\n"
@@ -91,12 +90,12 @@ async def start_private_chat(client, message):
         reply_markup=keyboard
       )
     accha = await message.reply_text(
-        text="__ᴅιиg ᴅιиg ꨄ︎ ѕтαятιιg..__"
+        text="__ᴅιιg ᴅιιg ꨄ︎ ѕтαятιιg..__"
     )
     await asyncio.sleep(0.2)
-    await accha.edit("__ᴅιиg ᴅιиg ꨄ sтαятιιg.....__")
+    await accha.edit("__ᴅιιg ᴅιιg ꨄ sтαятιιg.....__")
     await asyncio.sleep(0.2)
-    await accha.edit("__ᴅιиg ᴅιиg ꨄ︎ sтαятιιg..__")
+    await accha.edit("__ᴅιιg ᴅιιg ꨄ︎ sтαятιιg..__")
     await asyncio.sleep(0.2)
     await accha.delete()
 
@@ -124,15 +123,12 @@ async def callback_handler(_, query):
         await handle_group_query(query)
     elif query.data == "back":
         await handle_back_query(query)
-    elif query.data == "close":
-        await handle_close_query(query)
 
 async def handle_today_query(query):
     top_members = await get_top_members("today")
     response = " 𝗧𝗢𝗗𝗔𝗬 𝗟𝗘𝗔𝗗𝗘𝗥𝗕𝗢𝗔𝗥𝗗:\n\n"
     counter = 1
-    for member in top_members:
-        user_id = member["_id"]
+    for member in top_members:user_id = member["_id"]
         chat_member = await get_chat_member_safe(query.message.chat.id, user_id)
 
         if chat_member:
@@ -174,7 +170,7 @@ async def handle_total_query(query):
             [
                 [
                     InlineKeyboardButton("🔙 Back", callback_data="back"),
-                    InlineKeyboardButton("🔒 Close", callback_data="close")
+                    InlineKeyboardButton("🔒 Close", callback_data="close_conversation")
                 ]
             ]
         ))
@@ -186,12 +182,28 @@ async def handle_group_query(query):
     await query.message.reply_text("𝗝𝗼𝗶𝗻 𝗼𝘂𝗿 𝗴𝗿𝗼𝘂𝗽 𝗳𝗼𝗿 𝗱𝗶𝘀𝗰𝘂𝘀𝘀𝗶𝗼𝗻𝘀: @three_stars_ki_duniya")
 
 async def handle_back_query(query):
-    # Handle back action
-    await query.message.delete()
+    await query.message.edit_text(
+        "𝗧𝗵𝗶𝘀 𝗶𝘀 𝗧𝗦 𝗥𝗮𝗻𝗸𝗶𝗻𝗴 𝗕𝗼𝘁 \n 𝗰𝗼𝘂𝗻𝘁 𝘁𝗵𝗲 𝗰𝗵𝗮𝘁 𝗮𝗰𝘁𝗶𝘃𝗶𝘁𝘆 𝗼𝗳 𝘂𝘀𝗲𝗿𝘀 𝗶𝗻 𝘁𝗵𝗶𝘀 𝗴𝗿𝗼𝘂𝗽 \n 𝗬𝗼𝘂𝗿 𝗿𝗮𝗻𝗸𝗶𝗻𝗴 𝘁𝗲𝘅𝘁 𝗴𝗼𝗲𝘀 𝗵𝗲𝗿𝗲...",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("🍃ᴛᴏᴅᴀʏ🍃", callback_data="today"),
+                    InlineKeyboardButton("🍃ᴛᴏᴛᴀʟ🍃", callback_data="total")
+                ],
+                [
+                    InlineKeyboardButton("🍃ᴄʜᴀɴɴᴇʟ🍃", callback_data="channel"),
+                    InlineKeyboardButton("🍃ɢʀᴏᴜᴘ🍃", callback_data="group")
+                ]
+            ]
+        )
+    )
 
 async def handle_close_query(query):
-    # Close the message
     await query.message.delete()
+
+async def handle_close_conversation(query):
+    await query.message.delete()
+    await query.message.reply_to_message.delete()
 
 async def get_top_members(timeframe):
     if timeframe == "overall":
@@ -220,9 +232,23 @@ async def handle_messages(_, message):
 
 print(f"""╔═════❰𝐖𝐄𝐋𝐂𝐎𝐌𝐄❱════❍⊱❁۪۪
 ║┏━━━━━━➣
-║┣⪼ ᴏᴡɴᴇʀ  <a href="https://t.me/lll_notookk_lll">||ᴀʀɪ||❣️</a>
-║┣⪼ sᴜᴘᴘᴏʀᴛ <a href="https://t.me/three_stars_ki_duniya">ᴊᴏɪɴ</a>
-║┗━━━━━━━━━━━━━━━━━❍⊱❁۪۪
-""")
+║┣⪼ ᴏᴡɴᴇʀ :- @lll_notookk_lll
+║┣⪼ ᴘᴀʀᴛ ᴏғ :- @ll_about_ari_ll
+║┗━━━━━━➣
+║╔═════ஜ۩۞۩ஜ════╗
+║   ᴍᴇʀᴇ ʟɪʏᴇ ᴍᴇʀɪ ᴅᴜɴɪʏᴀ ʜᴏ ᴛᴍ..♥️ ᴍᴀɪɴᴇ
+║
+║ ᴊᴏ ᴍᴀɴɢɪ ᴡᴏ ᴅᴜᴀ ʜᴏᴛᴍ💞 ᴍᴇʀɪ ɴᴀᴢᴀʀ
+║
+║ ᴋɪ ᴛᴀʟᴀꜱʜ ʜᴏ ᴛᴍ✅ ᴍᴀɪɴᴇ ᴊᴏ ᴄʜᴀʜᴀ ᴡᴏ
+║
+║ ᴘʏᴀʀ ʜᴏ ᴛᴍ😍 ᴍᴇʀᴇ ɪɴᴛᴇᴢᴀᴀʀ ᴋɪ ʀᴀʜᴀᴛ
+║
+║ ʜᴏ ᴛᴍ✨ ᴍᴇʀᴇ ᴅɪʟ ᴋɪ ᴄʜᴀʜᴀᴛ ʜᴏ ᴛᴍ💖
+║
+║ ᴛᴜᴍ ʜᴏ ᴛᴏ ᴍᴜᴊʜᴇ ᴏʀ ᴋᴜᴄʜ ɴʜɪ ᴄʜᴀʜɪʏᴇ❣️ 
+║ ᴋᴀɪꜱᴇ ᴋᴀʜᴜɴ ꜱɪʀꜰ  ᴘʏᴀʀ ɴᴀʜɪ 🥀 ᴍᴇʀɪ ᴊᴀᴀɴ ʜᴏ ᴛᴍ💥
+║╚═════ஜ۩۞�����════╝
+╚═════════════════❍⊱❁ """)
 
 app.run()
