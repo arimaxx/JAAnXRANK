@@ -15,6 +15,7 @@ MONGO_URL = "mongodb+srv://seleno:seleno@cluster0.a4gsvlg.mongodb.net/?retryWrit
 BOT_USERNAME = "chat_rankbot"
 SUPPORT_GROUP_USERNAME = "three_stars_ki_duniya"
 SOURCE_CODE_CHANNEL_USERNAME = "ll_about_ari_ll"
+
 app = Client(
     "Level" ,
     api_id = API_ID ,
@@ -58,7 +59,7 @@ async def top_members_with_image(message, text, photo_url):
 @app.on_message(filters.command("ranking"))
 async def send_rankings_with_image(_, message):
     image_url = random.choice(IMAGE_URLS)
-    text = "𝗧𝗵𝗶𝘀 𝗶𝘀 𝗧𝗦 𝗥𝗮𝗻𝗸𝗶𝗻𝗴 𝗕𝗼𝘁 \n 𝗰𝗼𝘂𝗻𝘁 𝘁𝗵𝗲 𝗰𝗵𝗮𝘁 𝗮𝗰𝘁𝗶𝘃𝗶𝘁𝘆 𝗼𝗳 𝘂𝘀𝗲𝗿𝘀 𝗶𝗻 𝘁𝗵𝗶𝘀 𝗴𝗿𝗼𝘂𝗽 \n 𝗬𝗼𝘂𝗿 𝗿𝗮𝗻𝗸𝗶𝗻𝗴 𝘁𝗲𝘅𝘁 𝗴𝗼𝗲𝘀 𝗵𝗲𝗿𝗲..."
+    text = "𝗧𝗵𝗶𝘀 𝗶𝘀 𝗧𝗦 𝗥𝗮𝗻𝗸𝗶𝗻𝗴 𝗕𝗼𝘁 \n 𝗰𝗼𝘂𝗻���� 𝘁𝗵𝗲 𝗰𝗵𝗮𝘁 𝗮𝗰𝘁𝗶𝘃𝗶𝘁𝘆 𝗼𝗳 𝘂𝘀𝗲𝗿𝘀 𝗶𝗻 𝘁𝗵𝗶𝘀 𝗴𝗿𝗼𝘂𝗽 \n 𝗬𝗼𝘂𝗿 𝗿𝗮𝗻𝗸𝗶𝗻𝗴 𝘁𝗲𝘅𝘁 𝗴𝗼𝗲𝘀 𝗵𝗲𝗿𝗲..."
     await top_members_with_image(message, text, image_url)
 
 @app.on_message(filters.private & filters.command("start"))
@@ -80,7 +81,7 @@ async def start_private_chat(client, message):
     awaitclient.send_photo(
         chat_id=message.chat.id,
         photo=image_url,
-        caption="<b>нυι</b> тнιѕ ιѕ 「🛡ᴛꜱ ʀᴀɴᴋɪɴɢ ʙᴏᴛ🛡」❖ 💖\n"
+caption="<b>нυι</b> тнιѕ ιѕ 「🛡ᴛꜱ ʀᴀɴᴋɪɴɢ ʙᴏᴛ🛡」❖ 💖\n"
                 "♡━━━━━━━━ ᴀʀɪ ━━━━━━━♡\n"
                 "💫 ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛꜱ ʀᴀɴᴋɪɴɢ ʙᴏᴛ!.\n "
                 "🌟 ᴅɪꜱᴄᴏᴠᴇʀ ᴡʜᴏ ꜱʜɪɴᴇꜱ ᴛʜᴇ ʙʀɪɢʜᴛᴇꜱᴛ ɪɴ ᴏᴜʀ ᴄᴏᴍᴍᴜɴɪᴛʏ! ꜰʀᴏᴍ ᴀᴄᴛɪᴠᴇ ᴍᴇᴍʙᴇʀꜱ ᴛᴏ ᴛᴏᴘ ᴄᴏɴᴛʀɪʙᴜᴛᴏʀꜱ, ᴡᴇ'ʀᴇ ʜᴇʀᴇ ᴛᴏ ʀᴇᴄᴏɢɴɪᴢᴇ ᴇxᴄᴇʟʟᴇɴᴄᴇ.\n"
@@ -123,12 +124,15 @@ async def callback_handler(_, query):
         await handle_group_query(query)
     elif query.data == "back":
         await handle_back_query(query)
+    elif query.data == "close":
+        await handle_close_query(query)
 
 async def handle_today_query(query):
     top_members = await get_top_members("today")
     response = " 𝗧𝗢𝗗𝗔𝗬 𝗟𝗘𝗔𝗗𝗘𝗥𝗕𝗢𝗔𝗥𝗗:\n\n"
     counter = 1
-    for member in top_members:user_id = member["_id"]
+    for memberin top_members:
+        user_id = member["_id"]
         chat_member = await get_chat_member_safe(query.message.chat.id, user_id)
 
         if chat_member:
@@ -161,7 +165,7 @@ async def handle_total_query(query):
             total_messages = member["total_messages"]
             full_name = f"{chat_member.user.first_name} {chat_member.user.last_name}" if chat_member.user.last_name else chat_member.user.first_name
             username = chat_member.user.username
-            user_info = f"{counter}. {full_name}, ⏤͟͞{total_messages}\n"
+            user_info = f"{counter}. {full_name},⏤͟͞{total_messages}\n"
 
             response += user_info
             counter += 1
@@ -170,7 +174,7 @@ async def handle_total_query(query):
             [
                 [
                     InlineKeyboardButton("🔙 Back", callback_data="back"),
-                    InlineKeyboardButton("🔒 Close", callback_data="close_conversation")
+                    InlineKeyboardButton("🔒 Close", callback_data="close")
                 ]
             ]
         ))
@@ -200,10 +204,6 @@ async def handle_back_query(query):
 
 async def handle_close_query(query):
     await query.message.delete()
-
-async def handle_close_conversation(query):
-    await query.message.delete()
-    await query.message.reply_to_message.delete()
 
 async def get_top_members(timeframe):
     if timeframe == "overall":
@@ -248,7 +248,7 @@ print(f"""╔═════❰𝐖𝐄𝐋𝐂𝐎𝐌𝐄❱════❍⊱
 ║
 ║ ᴛᴜᴍ ʜᴏ ᴛᴏ ᴍᴜᴊʜᴇ ᴏʀ ᴋᴜᴄʜ ɴʜɪ ᴄʜᴀʜɪʏᴇ❣️ 
 ║ ᴋᴀɪꜱᴇ ᴋᴀʜᴜɴ ꜱɪʀꜰ  ᴘʏᴀʀ ɴᴀʜɪ 🥀 ᴍᴇʀɪ ᴊᴀᴀɴ ʜᴏ ᴛᴍ💥
-║╚═════ஜ۩۞�����════╝
+║╚═════ஜ۩۞۩ஜ════╝
 ╚═════════════════❍⊱❁ """)
 
 app.run()
