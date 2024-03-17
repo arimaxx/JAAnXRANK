@@ -1,7 +1,7 @@
 {
     "name": "Senko",
-    "description": "Senko Welcome Bot",
-    "repository": "https://github.com/arimaxx/RANKxARI",
+    "description": "JAAN Welcome Bot",
+    "repository": "https://github.com/arimaxx/JAAnXRANK",
     "env": {
         "BOT_TOKEN": {
             "description": "telegram bot token here",
