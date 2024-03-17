@@ -163,7 +163,7 @@ async def handle_total_query(query):
         if chat_member:
             total_messages = member["total_messages"]
             full_name = f"{chat_member.user.first_name} {chat_member.user.last_name}" if chat_member.user.last_name else chat_member.user.first_name
-           username = chat_member.user.username
+            username = chat_member.user.username
             user_info = f"{counter}. {full_name}, ⏤͟͞{total_messages}\n"
 
             response += user_info
