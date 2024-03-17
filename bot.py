@@ -40,7 +40,7 @@ user_data = {}
 
 async def top_members_with_image(message, text, photo_url):
     await message.reply_photo(
-        photo= "https://telegra.ph/file/00c74d7d761fdb7ba201a.jpg",
+        photo=photo_url,
         caption=text,
         reply_markup=InlineKeyboardMarkup(
             [
@@ -78,10 +78,10 @@ async def start_private_chat(client, message):
             ]
         ])
 
-    awaitclient.send_photo(
+    await client.send_photo(
         chat_id=message.chat.id,
         photo=image_url,
-caption="<b>нυι</b> тнιѕ ιѕ 「🛡ᴛꜱ ʀᴀɴᴋɪɴɢ ʙᴏᴛ🛡」❖ 💖\n"
+        caption="<b>нυι</b> тнιѕ ιѕ 「🛡ᴛꜱ ʀᴀɴᴋɪɴɢ ʙᴏᴛ🛡」❖ 💖\n"
                 "♡━━━━━━━━ ᴀʀɪ ━━━━━━━♡\n"
                 "💫 ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛꜱ ʀᴀɴᴋɪɴɢ ʙᴏᴛ!.\n "
                 "🌟 ᴅɪꜱᴄᴏᴠᴇʀ ᴡʜᴏ ꜱʜɪɴᴇꜱ ᴛʜᴇ ʙʀɪɢʜᴛᴇꜱᴛ ɪɴ ᴏᴜʀ ᴄᴏᴍᴍᴜɴɪᴛʏ! ꜰʀᴏᴍ ᴀᴄᴛɪᴠᴇ ᴍᴇᴍʙᴇʀꜱ ᴛᴏ ᴛᴏᴘ ᴄᴏɴᴛʀɪʙᴜᴛᴏʀꜱ, ᴡᴇ'ʀᴇ ʜᴇʀᴇ ᴛᴏ ʀᴇᴄᴏɢɴɪᴢᴇ ᴇxᴄᴇʟʟᴇɴᴄᴇ.\n"
@@ -90,15 +90,6 @@ caption="<b>нυι</b> тнιѕ ιѕ 「🛡ᴛꜱ ʀᴀɴᴋɪɴɢ ʙᴏᴛ🛡
                 "ᴍᴀᴅᴇ ᴡɪᴛʜ 🖤 ʙʏ <a href=\"https://t.me/lll_notookk_lll\">||ᴀʀɪ||❣️</a>",
         reply_markup=keyboard
       )
-    accha = await message.reply_text(
-        text="__ᴅιιg ᴅιιg ꨄ︎ ѕтαятιιg..__"
-    )
-    await asyncio.sleep(0.2)
-    await accha.edit("__ᴅιιg ᴅιιg ꨄ sтαятιιg.....__")
-    await asyncio.sleep(0.2)
-    await accha.edit("__ᴅιιg ᴅιιg ꨄ︎ sтαятιιg..__")
-    await asyncio.sleep(0.2)
-    await accha.delete()
 
 async def get_chat_member_safe(chat_id, user_id):
     try:
@@ -180,14 +171,14 @@ async def handle_total_query(query):
         ))
 
 async def handle_channel_query(query):
-    await query.message.reply_text("𝗝𝗼𝗶𝗻 𝗼𝘂𝗿 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 𝗳𝗼𝗿 𝗺𝗼𝗿𝗲 𝘂𝗽𝗱𝗮𝘁𝗲𝘀: @ll_about_ari_ll")
+    await query.message.reply_text("𝗝𝗼𝗶𝗻 𝗼𝘂𝗿 𝗰𝗵𝗮𝗻𝗻𝗲���� 𝗳𝗼𝗿 𝗺𝗼𝗿𝗲 𝘂𝗽𝗱𝗮𝘁𝗲𝘀: @ll_about_ari_ll")
 
 async def handle_group_query(query):
     await query.message.reply_text("𝗝𝗼𝗶𝗻 𝗼𝘂𝗿 𝗴𝗿𝗼𝘂𝗽 𝗳𝗼𝗿 𝗱𝗶𝘀𝗰𝘂𝘀𝘀𝗶𝗼𝗻𝘀: @three_stars_ki_duniya")
 
 async def handle_back_query(query):
     await query.message.edit_text(
-        "𝗧𝗵𝗶𝘀 𝗶𝘀 𝗧𝗦 𝗥𝗮𝗻𝗸𝗶𝗻𝗴 𝗕𝗼𝘁 \n 𝗰𝗼𝘂𝗻𝘁 𝘁𝗵𝗲 𝗰𝗵𝗮𝘁 𝗮𝗰𝘁𝗶𝘃𝗶𝘁𝘆 𝗼𝗳 𝘂𝘀𝗲𝗿𝘀 𝗶𝗻 𝘁𝗵𝗶𝘀 𝗴𝗿𝗼𝘂𝗽 \n 𝗬𝗼𝘂𝗿 𝗿𝗮𝗻𝗸𝗶𝗻𝗴 𝘁𝗲𝘅𝘁 𝗴𝗼𝗲𝘀 𝗵𝗲𝗿𝗲...",
+        "𝗧𝗵𝗶𝘀 𝗶𝘀 𝗧𝗦 𝗥𝗮𝗻𝗸𝗶𝗻𝗴 𝗕𝗼𝘁 \n 𝗰𝗼𝘂𝗻𝘁 𝘁𝗵𝗲 𝗰𝗵𝗮𝘁 𝗮𝗰𝘁𝗶𝘃𝗶𝘁𝘆 𝗼𝗳 𝘂𝘀𝗲𝗿𝘀 𝗶𝗻 𝘁𝗵𝗶𝘀 𝗴𝗿𝗼𝘂𝗽 \n 𝗬𝗼𝘂𝗿 𝗿𝗮�������������������� 𝘁𝗲𝘅𝘁 𝗴𝗼𝗲𝘀 𝗵𝗲𝗿𝗲...",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
