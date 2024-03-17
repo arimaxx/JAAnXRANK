@@ -40,7 +40,7 @@ user_data = {}
 
 async def top_members_with_image(message, text, photo_url):
     await message.reply_photo(
-        photo= "https://telegra.ph/file/00c74d7d761fdb7ba201a.jpg",
+        photo=photo_url,
         caption=text,
         reply_markup=InlineKeyboardMarkup(
             [
@@ -122,6 +122,10 @@ async def callback_handler(_, query):
         await handle_channel_query(query)
     elif query.data == "group":
         await handle_group_query(query)
+    elif query.data == "back":
+        await handle_back_query(query)
+    elif query.data == "close":
+        await handle_close_query(query)
 
 async def handle_today_query(query):
     top_members = await get_top_members("today")
@@ -182,23 +186,11 @@ async def handle_group_query(query):
     await query.message.reply_text("𝗝𝗼𝗶𝗻 𝗼𝘂𝗿 𝗴𝗿𝗼𝘂𝗽 𝗳𝗼𝗿 𝗱𝗶𝘀𝗰𝘂𝘀𝘀𝗶𝗼𝗻𝘀: @three_stars_ki_duniya")
 
 async def handle_back_query(query):
-    await query.message.edit_text(
-        "𝗧𝗵𝗶𝘀 𝗶𝘀 𝗧𝗦 𝗥𝗮𝗻𝗸𝗶𝗻𝗴 𝗕𝗼𝘁 \n 𝗰𝗼𝘂𝗻𝘁 𝘁𝗵𝗲 𝗰𝗵𝗮𝘁 𝗮𝗰𝘁𝗶𝘃𝗶𝘁𝘆 𝗼𝗳 𝘂𝘀𝗲𝗿𝘀 𝗶𝗻 𝘁𝗵𝗶𝘀 𝗴𝗿𝗼𝘂𝗽 \n 𝗬𝗼𝘂𝗿 𝗿𝗮𝗻𝗸𝗶𝗻𝗴 𝘁𝗲𝘅𝘁 𝗴𝗼𝗲𝘀 𝗵𝗲𝗿𝗲...",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("🍃ᴛᴏᴅᴀʏ🍃", callback_data="today"),
-                    InlineKeyboardButton("🍃ᴛᴏᴛᴀʟ🍃", callback_data="total")
-                ],
-                [
-                    InlineKeyboardButton("🍃ᴄʜᴀɴɴᴇʟ🍃", callback_data="channel"),
-                    InlineKeyboardButton("🍃ɢʀᴏᴜᴘ🍃", callback_data="group")
-                ]
-            ]
-        )
-    )
+    # Handle back action
+    await query.message.delete()
 
 async def handle_close_query(query):
+    # Close the message
     await query.message.delete()
 
 async def get_top_members(timeframe):
@@ -228,23 +220,9 @@ async def handle_messages(_, message):
 
 print(f"""╔═════❰𝐖𝐄𝐋𝐂𝐎𝐌𝐄❱════❍⊱❁۪۪
 ║┏━━━━━━➣
-║┣⪼ ᴏᴡɴᴇʀ :- @lll_notookk_lll
-║┣⪼ ᴘᴀʀᴛ ᴏғ :- @ll_about_ari_ll
-║┗━━━━━━➣
-║╔═════ஜ۩۞۩ஜ════╗
-║   ᴍᴇʀᴇ ʟɪʏᴇ ᴍᴇʀɪ ᴅᴜɴɪʏᴀ ʜᴏ ᴛᴍ..♥️ ᴍᴀɪɴᴇ
-║
-║ ᴊᴏ ᴍᴀɴɢɪ ᴡᴏ ᴅᴜᴀ ʜᴏᴛᴍ💞 ᴍᴇʀɪ ɴᴀᴢᴀʀ
-║
-║ ᴋɪ ᴛᴀʟᴀꜱʜ ʜᴏ ᴛᴍ✅ ᴍᴀɪɴᴇ ᴊᴏ ᴄʜᴀʜᴀ ᴡᴏ
-║
-║ ᴘʏᴀʀ ʜᴏ ᴛᴍ😍 ᴍᴇʀᴇ ɪɴᴛᴇᴢᴀᴀʀ ᴋɪ ʀᴀʜᴀᴛ
-║
-║ ʜᴏ ᴛᴍ✨ ᴍᴇʀᴇ ᴅɪʟ ᴋɪ ᴄʜᴀʜᴀᴛ ʜᴏ ᴛᴍ💖
-║
-║ ᴛᴜᴍ ʜᴏ ᴛᴏ ᴍᴜᴊʜᴇ ᴏʀ ᴋᴜᴄʜ ɴʜɪ ᴄʜᴀʜɪʏᴇ❣️ 
-║ ᴋᴀɪꜱᴇ ᴋᴀʜᴜɴ ꜱɪʀꜰ  ᴘʏᴀʀ ɴᴀʜɪ 🥀 ᴍᴇʀɪ ᴊᴀᴀɴ ʜᴏ ᴛᴍ💥
-║╚═════ஜ۩۞۩ஜ════╝
-╚═════════════════❍⊱❁ """)
+║┣⪼ ᴏᴡɴᴇʀ  <a href="https://t.me/lll_notookk_lll">||ᴀʀɪ||❣️</a>
+║┣⪼ sᴜᴘᴘᴏʀᴛ <a href="https://t.me/three_stars_ki_duniya">ᴊᴏɪɴ</a>
+║┗━━━━━━━━━━━━━━━━━❍⊱❁۪۪
+""")
 
 app.run()
