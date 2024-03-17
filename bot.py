@@ -78,7 +78,7 @@ async def start_private_chat(client, message):
             ]
         ])
 
-    awaitclient.send_photo(
+    await client.send_photo(
         chat_id=message.chat.id,
         photo=image_url,
         caption="<b>нυι</b> тнιѕ ιѕ 「🛡ᴛꜱ ʀᴀɴᴋɪɴɢ ʙᴏᴛ🛡」❖ 💖\n"
